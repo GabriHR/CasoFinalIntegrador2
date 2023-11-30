@@ -12,6 +12,24 @@ struct ColorConsole
 struct ConsoleBox
 {
     void new_text() {/*...*/}
-    void set_text(const string &text) { cout << text << endl; }
+    static void set_text(const string &text) { cout << text << endl; }
 };
 ConsoleBox *consolebox = new ConsoleBox;
+
+void load_script(const char* filename, bool show_script = false)
+{
+    ifstream file(filename);
+    if (!file)
+    {
+        cerr << "Error opening " << filename << endl;
+        return;
+    }
+
+    string script;
+    string line;
+    while (getline(file, line))
+    {
+        script += line + "\n";
+    }
+
+}
