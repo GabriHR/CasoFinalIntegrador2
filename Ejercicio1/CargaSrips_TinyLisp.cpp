@@ -12,8 +12,9 @@ struct ColorConsole
 struct ConsoleBox
 {
     void new_text() {/*...*/}
-    static void set_text(const string &text) { cout << text << endl; }
+    void set_text(const string &text) { cout << text << endl; }
 };
+
 ConsoleBox *consolebox = new ConsoleBox;
 
 void load_script(const char* filename, bool show_script = false)
@@ -38,5 +39,22 @@ void load_script(const char* filename, bool show_script = false)
         cout << script << endl;
     }
     consolebox->new_text();
-    ConsoleBox::set_text(script);
+    consolebox->set_text(script);
+}
+
+void load_script()
+{
+    string filename;
+    cout << "Archivo: ";
+    cin >> filename;
+    load_script(filename.c_str(), true);
+}
+
+int main() {
+    try {
+        load_script();
+    } catch (const exception& e) {
+        cerr << "An error occurred: " << e.what() << endl;
+    }
+    return 0;
 }
