@@ -32,4 +32,11 @@ void load_script(const char* filename, bool show_script = false)
         script += line + "\n";
     }
 
+    if (show_script)
+    {
+        cout << ColorConsole::fg_blue << ColorConsole::bg_white;
+        cout << script << endl;
+    }
+    consolebox->new_text();
+    ConsoleBox::set_text(script);
 }
